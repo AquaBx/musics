@@ -23,9 +23,9 @@
         }
     })
 
-    index.subscribe(()=>{
+    index.subscribe((value)=>{
         if (audio == undefined ) return
-        audio.src = data.library.at($index)
+        audio.src = data.library.at(value)
         audio.play()
     })
 
@@ -36,7 +36,7 @@
 
     function previous(){
         audio.pause()
-        $index = ($index - 1)%data.library.length
+        $index = $index == 0 ? data.library.length-1 : $index - 1
     }
 
     function next(){
